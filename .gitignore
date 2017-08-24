@@ -1,6 +1,5 @@
-/[Ll]ibrary/*
-/[Tt]emp/*
-/[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
-/Assets/AssetStoreTools*
+
+
+Gather N Sell/Library*
+Gather N Sell/Temp*
+Gather N Sell/ProjectSettings*
