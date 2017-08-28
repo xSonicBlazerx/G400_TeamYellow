@@ -18,6 +18,8 @@ public class LineManager : MonoBehaviour {
 												 this.transform.position.y),
 									this.transform.rotation);
 		}
+		//Makes first customer state their request
+		line [0].GetComponent<Customer> ().Request ();
 	}
 
 	//Deals with variables once a customer has been served
@@ -39,6 +41,10 @@ public class LineManager : MonoBehaviour {
 		}
 		//Removes one from the remaining customer count
 		GameManager.customersLeft--;
+
+		//Has the next customer at the head state their request
+		if(GameManager.customersLeft > 0)
+			line [0].GetComponent<Customer> ().Request ();
 	}
 
 	// Update is called once per frame

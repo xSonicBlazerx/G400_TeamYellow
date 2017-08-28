@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 	//Day Variables
 	public static int customersLeft = 15;
-	float dayTimer = 10;
+	float dayTimer = 180;
 	float timeLeft;
 
 

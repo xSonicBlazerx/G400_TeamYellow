@@ -7,7 +7,7 @@ public class Customer : MonoBehaviour {
 	public int amount = 0;
 
 
-	void Start () {
+	void Awake () {
 		
 		// Initializes the resource type and amount for the given customer
 		this.amount = Random.Range (1, 4); // Amount of the given resource
@@ -30,16 +30,19 @@ public class Customer : MonoBehaviour {
 			this.resource = "berries";
 			break;
 		// Resource 3 = coal
-		case 3:
+		default:
 			//Debug.Log ("coal");
 			this.resource = "coal";
 			break;
 		}
-		//Debug.Log ("resource: " + this.resource + ", amount: " + this.amount);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	public void Request(){
+		Debug.Log ("resource: " + this.resource + ", amount: " + this.amount);
 	}
 }
