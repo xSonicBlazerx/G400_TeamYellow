@@ -1,10 +1,11 @@
-﻿<Properties StartupItem="Gather N Sell.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player.cs">
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\LineManager.cs">
     <Files>
       <File FileName="Assets\Scripts\Player.cs" Line="10" Column="27" />
-      <File FileName="Assets\Scripts\GameManager.cs" Line="12" Column="32" />
-      <File FileName="Assets\Scripts\LineManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameManager.cs" Line="8" Column="22" />
+      <File FileName="Assets\Scripts\LineManager.cs" Line="21" Column="45" />
+      <File FileName="Assets\Scripts\Customer.cs" Line="46" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
