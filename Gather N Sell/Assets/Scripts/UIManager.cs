@@ -5,10 +5,8 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
 
-    //amount in inventory
-    public int woodCount = 0;
-    public int berryCount = 0;
-    public int coalCount = 0;
+    //player script
+    Player player;
 
     //prices
     public int wCost = 0;
@@ -23,23 +21,33 @@ public class UIManager : MonoBehaviour {
     public Text woodPrice;
     public Text berryPrice;
     public Text coalPrice;
+
+    public Text coins;
+
+
     
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start ()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        woodNum.text = woodCount.ToString();
-        berryNum.text = berryCount.ToString();
-        coalNum.text = coalCount.ToString();
+        //inventory
+        woodNum.text = player.LumberSupply.ToString();
+        berryNum.text = player.BerrySupply.ToString();
+        coalNum.text = player.CoalSupply.ToString();
 
+        //prices
         woodPrice.text = wCost.ToString();
         berryPrice.text = bCost.ToString();
         coalPrice.text = cCost.ToString();
+
+        //total coins
+        coins.text = player.MoneySupply.ToString();
     }
 
     // increases the price of wood
