@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class LineManager : MonoBehaviour {
 	public GameObject customer;
-	private GameObject[] line;
+	public GameObject[] line;
 	private int customersLeft;
+	public Player Player;
+	public UIManager costs;
 
 	// Use this for initialization
 	void Start () {
@@ -23,7 +25,8 @@ public class LineManager : MonoBehaviour {
 	}
 
 	//Deals with variables once a customer has been served
-	void CustomerServed(){
+	public void CustomerServed(){
+		Destroy (line [0]);
 		//Shifts all customers down the line after the lead customer is served
 		for (int i = 0; i < customersLeft; i++) {
 			//If on the last customer on the list, sets it to null
@@ -47,12 +50,46 @@ public class LineManager : MonoBehaviour {
 			line [0].GetComponent<Customer> ().Request ();
 	}
 
+	public void TransAccept(){
+		int amount = line [0].GetComponent<Customer> ().amount;
+		int max = line [0].GetComponent<Customer> ().maxVal;
+		switch (line [0].GetComponent<Customer> ().resource) {
+		case "wood":
+			if (Player.LumberSupply >= amount && costs.wCost <= max) {
+				Player.LumberSupply -= amount;
+				Player.MoneySupply += costs.wCost * amount;
+			}else
+				Debug.Log ("The customer leaves in a rage, ranting about your lack of stock at a reasonable price...");
+			break;
+		case "berries":
+			if (Player.BerrySupply >= amount && costs.bCost <= max) {
+				Player.BerrySupply -= amount;
+				Player.MoneySupply += costs.bCost * amount;
+			}else	
+				Debug.Log ("The customer leaves in a rage, ranting about your lack of stock at a reasonable price...");
+			break;
+		default:
+			if (Player.CoalSupply >= amount && costs.cCost <= max) {
+				Player.CoalSupply -= amount;
+				Player.MoneySupply += costs.cCost * amount;
+			}else
+				Debug.Log ("The customer leaves in a rage, ranting about your lack of stock at a reasonable price...");
+			break;
+		}
+		CustomerServed ();
+	}
+
+	public void TransDecline(){
+		Debug.Log ("Declined");
+		CustomerServed ();
+	}
+
 	// Update is called once per frame
 	void Update () {
-		//If the space key is pressed, then a customer is served
-		if (Input.GetKeyDown (KeyCode.Space)) {
-			Debug.Log ("Key Pressed!");
-			CustomerServed ();
-		}
+//		//If the space key is pressed, then a customer is served
+//		if (Input.GetKeyDown (KeyCode.Space)) {
+//			Debug.Log ("Key Pressed!");
+//			CustomerServed ();
+//		}
 	}
 }

@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224113937894882156}
   - component: {fileID: 212124969395058810}
-  - component: {fileID: 114164792966022018}
+  - component: {fileID: 114344984340613752}
   m_Layer: 0
   m_Name: Customer
   m_TagString: Untagged
@@ -28,7 +28,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114164792966022018
+--- !u!114 &114344984340613752
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -41,6 +41,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resource: 
   amount: 0
+  easyCustomer: {fileID: 21300000, guid: 4e597a6f4e8b53347819860599eb2acc, type: 3}
+  mediumCustomer: {fileID: 21300000, guid: 5157600e9ef733d4b91898639a2dfcbb, type: 3}
+  hardCustomer: {fileID: 21300000, guid: 6b49ef87ef99c7042b92877abeb8ca2b, type: 3}
+  minVal: 0
+  maxVal: 0
 --- !u!212 &212124969395058810
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -81,7 +86,7 @@ SpriteRenderer:
   m_Size: {x: 0.2, y: 0.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!224 &224113937894882156
 RectTransform:

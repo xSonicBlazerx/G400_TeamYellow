@@ -24,6 +24,15 @@ public class UIManager : MonoBehaviour {
 
     public Text coins;
 
+	public Image item;
+	public Text amount;
+
+	public Sprite wood;
+	public Sprite berries;
+	public Sprite coal;
+
+	public LineManager line;
+
 
     
 
@@ -48,6 +57,20 @@ public class UIManager : MonoBehaviour {
 
         //total coins
         coins.text = player.MoneySupply.ToString();
+
+		//Customer request
+		amount.text = "" + line.line[0].GetComponent<Customer>().amount;
+		switch (line.line [0].GetComponent<Customer> ().resource) {
+		case "wood":
+			item.GetComponent<Image> ().sprite = wood;
+			break;
+		case "berries":
+			item.GetComponent<Image> ().sprite = berries;
+			break;
+		default:
+			item.GetComponent<Image> ().sprite = coal;
+			break;
+		}
     }
 
     // increases the price of wood
