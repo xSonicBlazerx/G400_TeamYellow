@@ -22,7 +22,7 @@ public class SectionManager : MonoBehaviour {
 	public float background_length;
 
 	//this determines how my possible resources are per new sections, and how far they should be away from each other
-	public float num_resources; //take total amound per section plus 2
+	public float num_resources;
 	public float left_increments;
 	public float right_increments;
 
@@ -40,29 +40,27 @@ public class SectionManager : MonoBehaviour {
 			Vector2 left_background_spawn;
 			left_background_spawn = new Vector2(player_pos.x + left_adjustment, 6f);
 				
-			GameObject new_panel = Instantiate (background, left_background_spawn, rot);
+			Instantiate (background, left_background_spawn, rot);
 			next_left_checkpoint -= background_length;
 
-			for (int i = 1; i >= num_resources; i++) {
-				int rand_num = Random.Range (1, 5);
+			for (int i = 1; i < num_resources; i++) {
+                Debug.Log("in the loop");
+				int rand_num = Random.Range (1, 6);
 				float changing_increment = i * left_increments;
 
 				Vector2 next_left_spawn;
 				next_left_spawn = new Vector2 (next_left_checkpoint + changing_increment, 3f);
 
 				if (rand_num == 1) {
-					GameObject new_resource = Instantiate (tree, next_left_spawn, rot);
+					Instantiate (tree, next_left_spawn, rot);
 				}
 				if (rand_num == 2) {
-					GameObject new_resource = Instantiate (coal, next_left_spawn, rot);
-				}
+					Instantiate (coal, next_left_spawn, rot);
+                }
 				if (rand_num == 3) {
-					GameObject new_resource = Instantiate (bush, next_left_spawn, rot);
-				}
-				if (rand_num == 4) {
-					
-				}
-			}
+                    Instantiate (bush, next_left_spawn, rot);
+                }
+            }
 		}
 
 		//if player goes too far right, game will spawn new background to ensure player stays in bounds
@@ -70,29 +68,27 @@ public class SectionManager : MonoBehaviour {
 			Vector2 right_background_spawn;
 			right_background_spawn = new Vector2(player_pos.x + right_adjustment, 6f);
 
-			GameObject new_panel = Instantiate (background, right_background_spawn, rot);
+			Instantiate (background, right_background_spawn, rot);
 			next_right_checkpoint += background_length;
 
-			for (int i = 1; i >= num_resources; i++) {
-				int rand_num = Random.Range (1, 5);
+			for (int i = 1; i <= num_resources; i++) {
+				int rand_num = Random.Range (1, 6);
 				float changing_increment = i * right_increments;
 
 				Vector2 next_right_spawn;
 				next_right_spawn = new Vector2 (next_right_checkpoint + changing_increment, 3f);
 
 				if (rand_num == 1) {
-					GameObject new_resource = Instantiate (tree, next_right_spawn, rot);
-				}
+					Instantiate (tree, next_right_spawn, rot);
+                }
 				if (rand_num == 2) {
-					GameObject new_resource = Instantiate (coal, next_right_spawn, rot);
-				}
+					Instantiate (coal, next_right_spawn, rot);
+                }
 				if (rand_num == 3) {
-					GameObject new_resource = Instantiate (bush, next_right_spawn, rot);
-				}
-				if (rand_num == 4) {
+					Instantiate (bush, next_right_spawn, rot);
+                }
 
-				}
-			}
+            }
 		}
 	}
 }
