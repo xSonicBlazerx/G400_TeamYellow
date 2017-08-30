@@ -8,8 +8,8 @@ public class Player : MonoBehaviour {
 	public int CoalSupply = 0;
 	public int MoneySupply = 0;
 	public int TimeRemaining;
-	public float hForce = 200f;
-	public float maxSpeed = 2f;
+	public float hForce = 100f;
+	public float maxSpeed = 3f;
 
 	private Rigidbody2D rb2d;
 	// Use this for initialization
@@ -25,13 +25,8 @@ public class Player : MonoBehaviour {
 	void FixedUpdate()
 	{
 		float h = Input.GetAxis ("Horizontal");
+		//Debug.Log (h);
+		rb2d.velocity = new Vector2 (h * maxSpeed, rb2d.velocity.y);
 
-		if (h * rb2d.velocity.x < maxSpeed) {
-			rb2d.AddForce (Vector2.right * h * hForce);
-		}
-
-		if (Mathf.Abs (rb2d.velocity.x) > maxSpeed) {
-			rb2d.velocity = new Vector2(Mathf.Sign(rb2d.velocity.x) * maxSpeed, rb2d.velocity.y);
-		}
 	}
 }
