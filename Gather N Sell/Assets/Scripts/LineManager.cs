@@ -8,6 +8,7 @@ public class LineManager : MonoBehaviour {
 	private int customersLeft;
 	public Player Player;
 	public UIManager costs;
+	public GameObject AudioManager;
 
 	// Use this for initialization
 	void Start () {
@@ -58,22 +59,31 @@ public class LineManager : MonoBehaviour {
 			if (Player.LumberSupply >= amount && costs.wCost <= max) {
 				Player.LumberSupply -= amount;
 				Player.MoneySupply += costs.wCost * amount;
-			}else
+				AudioManager.GetComponent<AudioManager> ().AcceptSale ();
+			} else {
+				AudioManager.GetComponent<AudioManager> ().DeclineSale ();
 				Debug.Log ("The customer leaves in a rage, ranting about your lack of stock at a reasonable price...");
+			}
 			break;
 		case "berries":
 			if (Player.BerrySupply >= amount && costs.bCost <= max) {
 				Player.BerrySupply -= amount;
 				Player.MoneySupply += costs.bCost * amount;
-			}else	
+				AudioManager.GetComponent<AudioManager> ().AcceptSale ();
+			} else {	
+				AudioManager.GetComponent<AudioManager> ().DeclineSale ();
 				Debug.Log ("The customer leaves in a rage, ranting about your lack of stock at a reasonable price...");
+			}
 			break;
 		default:
 			if (Player.CoalSupply >= amount && costs.cCost <= max) {
 				Player.CoalSupply -= amount;
 				Player.MoneySupply += costs.cCost * amount;
-			}else
+				AudioManager.GetComponent<AudioManager> ().AcceptSale ();
+			} else {
+				AudioManager.GetComponent<AudioManager> ().DeclineSale ();
 				Debug.Log ("The customer leaves in a rage, ranting about your lack of stock at a reasonable price...");
+			}
 			break;
 		}
 		CustomerServed ();
@@ -81,6 +91,7 @@ public class LineManager : MonoBehaviour {
 
 	public void TransDecline(){
 		Debug.Log ("Declined");
+		AudioManager.GetComponent<AudioManager> ().DeclineSale ();
 		CustomerServed ();
 	}
 
