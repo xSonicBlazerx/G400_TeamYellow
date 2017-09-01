@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
+	public GameObject camera;
+
 	public int LumberSupply = 0;
 	public int BerrySupply = 0;
 	public int CoalSupply = 0;
@@ -14,19 +17,27 @@ public class Player : MonoBehaviour {
 	private Rigidbody2D rb2d;
 	// Use this for initialization
 	void Start () {
-		rb2d = GetComponent<Rigidbody2D> ();	
+		rb2d = GetComponent<Rigidbody2D> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (Input.GetKeyDown (KeyCode.Space) && SceneManager.GetActiveScene().name != "Day") {
+			Application.LoadLevel("_Scenes/Day");
+		}
 	}
 
 	void FixedUpdate()
 	{
-		float h = Input.GetAxis ("Horizontal");
-		//Debug.Log (h);
-		rb2d.velocity = new Vector2 (h * maxSpeed, rb2d.velocity.y);
+		if (SceneManager.GetActiveScene ().name != "Day") {
+			float h = Input.GetAxis ("Horizontal");
+			//Debug.Log (h);
+			rb2d.velocity = new Vector2 (h * maxSpeed, rb2d.velocity.y);
+		}
+	}
 
+	void Awake(){
+		DontDestroyOnLoad (this);
+		DontDestroyOnLoad (camera);
 	}
 }

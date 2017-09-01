@@ -10,8 +10,12 @@ public class LineManager : MonoBehaviour {
 	public UIManager costs;
 	public GameObject AudioManager;
 
+	public GameObject gameManager;
+
 	// Use this for initialization
 	void Start () {
+		//Player = GameManager.player;
+		//Player = gameManager.GetComponent<GameManager>().player;
 		this.customersLeft = GameManager.customersLeft;
 		this.line = new GameObject[customersLeft];
 		Debug.Log (customersLeft);
@@ -29,7 +33,7 @@ public class LineManager : MonoBehaviour {
 	public void CustomerServed(){
 		Destroy (line [0]);
 		//Shifts all customers down the line after the lead customer is served
-		for (int i = 0; i < customersLeft; i++) {
+		for (int i = 0; i < this.customersLeft; i++) {
 			//If on the last customer on the list, sets it to null
 			if (i == customersLeft - 1) {
 				line [i] = null;
@@ -45,6 +49,7 @@ public class LineManager : MonoBehaviour {
 		}
 		//Removes one from the remaining customer count
 		GameManager.customersLeft--;
+		Debug.Log ("Customers Remaining: " + GameManager.customersLeft);
 
 		//Has the next customer at the head state their request
 		if(GameManager.customersLeft > 0)
@@ -62,7 +67,7 @@ public class LineManager : MonoBehaviour {
 				AudioManager.GetComponent<AudioManager> ().AcceptSale ();
 			} else {
 				AudioManager.GetComponent<AudioManager> ().DeclineSale ();
-				Debug.Log ("The customer leaves in a rage, ranting about your lack of stock at a reasonable price...");
+				//Debug.Log ("The customer leaves in a rage, ranting about your lack of stock at a reasonable price...");
 			}
 			break;
 		case "berries":
@@ -72,7 +77,7 @@ public class LineManager : MonoBehaviour {
 				AudioManager.GetComponent<AudioManager> ().AcceptSale ();
 			} else {	
 				AudioManager.GetComponent<AudioManager> ().DeclineSale ();
-				Debug.Log ("The customer leaves in a rage, ranting about your lack of stock at a reasonable price...");
+				//Debug.Log ("The customer leaves in a rage, ranting about your lack of stock at a reasonable price...");
 			}
 			break;
 		default:
@@ -82,7 +87,7 @@ public class LineManager : MonoBehaviour {
 				AudioManager.GetComponent<AudioManager> ().AcceptSale ();
 			} else {
 				AudioManager.GetComponent<AudioManager> ().DeclineSale ();
-				Debug.Log ("The customer leaves in a rage, ranting about your lack of stock at a reasonable price...");
+				//Debug.Log ("The customer leaves in a rage, ranting about your lack of stock at a reasonable price...");
 			}
 			break;
 		}
@@ -90,7 +95,7 @@ public class LineManager : MonoBehaviour {
 	}
 
 	public void TransDecline(){
-		Debug.Log ("Declined");
+		//Debug.Log ("Declined");
 		AudioManager.GetComponent<AudioManager> ().DeclineSale ();
 		CustomerServed ();
 	}

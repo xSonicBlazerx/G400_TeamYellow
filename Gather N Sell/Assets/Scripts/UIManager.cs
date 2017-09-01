@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour {
 
@@ -45,31 +46,33 @@ public class UIManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        //inventory
-        woodNum.text = player.LumberSupply.ToString();
-        berryNum.text = player.BerrySupply.ToString();
-        coalNum.text = player.CoalSupply.ToString();
+		if (SceneManager.GetActiveScene ().name == "Day") {
+			//inventory
+			woodNum.text = player.LumberSupply.ToString ();
+			berryNum.text = player.BerrySupply.ToString ();
+			coalNum.text = player.CoalSupply.ToString ();
 
-        //prices
-        woodPrice.text = wCost.ToString();
-        berryPrice.text = bCost.ToString();
-        coalPrice.text = cCost.ToString();
+			//prices
+			woodPrice.text = wCost.ToString ();
+			berryPrice.text = bCost.ToString ();
+			coalPrice.text = cCost.ToString ();
 
-        //total coins
-        coins.text = player.MoneySupply.ToString();
+			//total coins
+			coins.text = player.MoneySupply.ToString ();
 
-		//Customer request
-		amount.text = "" + line.line[0].GetComponent<Customer>().amount;
-		switch (line.line [0].GetComponent<Customer> ().resource) {
-		case "wood":
-			item.GetComponent<Image> ().sprite = wood;
-			break;
-		case "berries":
-			item.GetComponent<Image> ().sprite = berries;
-			break;
-		default:
-			item.GetComponent<Image> ().sprite = coal;
-			break;
+			//Customer request
+				amount.text = "" + line.line [0].GetComponent<Customer> ().amount;
+				switch (line.line [0].GetComponent<Customer> ().resource) {
+				case "wood":
+					item.GetComponent<Image> ().sprite = wood;
+					break;
+				case "berries":
+					item.GetComponent<Image> ().sprite = berries;
+					break;
+				default:
+					item.GetComponent<Image> ().sprite = coal;
+					break;
+				}
 		}
     }
 

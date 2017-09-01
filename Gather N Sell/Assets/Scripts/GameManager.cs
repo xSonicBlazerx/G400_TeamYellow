@@ -3,15 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
+	//AudioManager
+	public GameObject audioManager;
+	public Player player;
+
 	//Day Variables
 	public static int customersLeft = 15;
 	float dayTimer = 180;
 	float timeLeft;
 
+	void Awake(){
+		DontDestroyOnLoad (this);
+	}
 
 	// Use this for initialization
 	void Start () {
 		this.timeLeft = dayTimer;
+		//Instantiate (player);
 	}
 	
 	// Update is called once per frame
@@ -27,8 +35,12 @@ public class GameManager : MonoBehaviour {
 	 */
 	void GameEnd(){
 		if (customersLeft == 0 || this.timeLeft <= 0) {
-			Debug.Log ("Game Over!!!");
-			UnityEditor.EditorApplication.isPlaying = false;
+			Debug.Log ("Day Over!!!");
+			timeLeft = dayTimer;
+			customersLeft = 15;
+			//UnityEditor.EditorApplication.isPlaying = false;
+			audioManager.GetComponent<AudioManager>().ChangingScene();
+			Application.LoadLevel("_Scenes/Workshop");
 		}
 	}
 }

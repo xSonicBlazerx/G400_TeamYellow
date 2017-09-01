@@ -26,6 +26,10 @@ public class SectionManager : MonoBehaviour {
 	public float left_increments;
 	public float right_increments;
 
+	void Awake(){
+		DontDestroyOnLoad (this);
+	}
+
 	// Use this for initialization
 	void Start () {
 		
