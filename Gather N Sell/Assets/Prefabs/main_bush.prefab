@@ -29,7 +29,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4962455968580714
 Transform:
   m_ObjectHideFlags: 1
@@ -119,5 +119,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gatherTimer: 3
-  audioManager: {fileID: 114957021653296062, guid: 0b4e393183ff7504f8f7c96facf3e487,
-    type: 2}
+  audioManager: {fileID: 0}

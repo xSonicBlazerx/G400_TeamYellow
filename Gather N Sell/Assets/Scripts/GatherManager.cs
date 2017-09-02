@@ -10,7 +10,7 @@ public class GatherManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		audioManager = GameObject.Find ("AudioManager").GetComponent<AudioManager> ();
 	}
 	
 	// Update is called once per frame
@@ -19,27 +19,33 @@ public class GatherManager : MonoBehaviour {
 			if (Input.GetButton ("Gather")) {
 				gatherTimer -= Time.deltaTime;
 				Debug.Log (gatherTimer);
-			}
-		}
+				if(!this.GetComponent<AudioSource>().isPlaying)
+					this.GetComponent<AudioSource> ().Play ();
+			} else
+				this.GetComponent<AudioSource> ().Pause ();
+		} else
+			this.GetComponent<AudioSource>().Pause ();
+		
 		if (gatherTimer < 0) {
 			//Destroy (gameObject);
+			this.GetComponent<AudioSource> ().Pause ();
 			GameObject player = GameObject.Find ("Player");
 			var playerScript = player.GetComponent<Player>();
 			if (this.gameObject.CompareTag ("Tree")) {
 				Debug.Log (playerScript.LumberSupply);
 				playerScript.LumberSupply++;
 				Debug.Log (playerScript.LumberSupply);
-				//audioManager.WoodCollectSuccess ();
+				audioManager.WoodCollectSuccess ();
 			} else if (this.gameObject.CompareTag ("Berry")) {
 				Debug.Log (playerScript.BerrySupply);
 				playerScript.BerrySupply++;
 				Debug.Log (playerScript.BerrySupply);
-				//audioManager.BerriesCollectSuccess ();
+				audioManager.BerriesCollectSuccess ();
 			} else if (this.gameObject.CompareTag ("Coal")) {
 				Debug.Log (playerScript.CoalSupply);
 				playerScript.CoalSupply++;
 				Debug.Log (playerScript.CoalSupply);
-				//audioManager.CoalCollectSuccess ();
+				audioManager.CoalCollectSuccess ();
 			}
 			Destroy (gameObject);
 			Debug.Log ("Item Gathered!");

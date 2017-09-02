@@ -56,7 +56,8 @@ public class SectionManager : MonoBehaviour {
 				next_left_spawn = new Vector2 (next_left_checkpoint + changing_increment, 3f);
 
 				if (rand_num == 1) {
-					Instantiate (tree, next_left_spawn, rot);
+					Instantiate (tree, new Vector2(next_left_spawn.x,
+						next_left_spawn.y + 1.75f), rot);
 				}
 				if (rand_num == 2) {
 					Instantiate (coal, next_left_spawn, rot);
@@ -83,7 +84,8 @@ public class SectionManager : MonoBehaviour {
 				next_right_spawn = new Vector2 (next_right_checkpoint + changing_increment, 3f);
 
 				if (rand_num == 1) {
-					Instantiate (tree, next_right_spawn, rot);
+					Instantiate (tree, new Vector2(next_right_spawn.x,
+						next_right_spawn.y + 1.75f), rot);
                 }
 				if (rand_num == 2) {
 					Instantiate (coal, next_right_spawn, rot);
