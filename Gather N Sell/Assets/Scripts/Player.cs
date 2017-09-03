@@ -5,11 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 	public GameObject camera;
+	public AudioManager audioManager;
 
-	public int LumberSupply = 0;
-	public int BerrySupply = 0;
-	public int CoalSupply = 0;
-	public int MoneySupply = 0;
+	public static int LumberSupply = 10;
+	public static int BerrySupply = 10;
+	public static int CoalSupply = 10;
+	public static int MoneySupply = 0;
 	public int TimeRemaining;
 	public float hForce = 100f;
 	public float maxSpeed = 3f;
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour {
 	private Rigidbody2D rb2d;
 	// Use this for initialization
 	void Start () {
+		audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 		rb2d = GetComponent<Rigidbody2D> ();
 	}
 	
@@ -24,6 +26,7 @@ public class Player : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Space) && SceneManager.GetActiveScene().name != "Day") {
 			Application.LoadLevel("_Scenes/Day");
+			audioManager.ChangingScene ();
 		}
 	}
 
@@ -37,7 +40,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void Awake(){
-		DontDestroyOnLoad (this);
-		DontDestroyOnLoad (camera);
+		//DontDestroyOnLoad (this);
+		//DontDestroyOnLoad (camera);
 	}
 }

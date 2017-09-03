@@ -48,9 +48,9 @@ public class UIManager : MonoBehaviour {
     {
 		if (SceneManager.GetActiveScene ().name == "Day") {
 			//inventory
-			woodNum.text = player.LumberSupply.ToString ();
-			berryNum.text = player.BerrySupply.ToString ();
-			coalNum.text = player.CoalSupply.ToString ();
+			woodNum.text = Player.LumberSupply.ToString ();
+			berryNum.text = Player.BerrySupply.ToString ();
+			coalNum.text = Player.CoalSupply.ToString ();
 
 			//prices
 			woodPrice.text = wCost.ToString ();
@@ -58,7 +58,7 @@ public class UIManager : MonoBehaviour {
 			coalPrice.text = cCost.ToString ();
 
 			//total coins
-			coins.text = player.MoneySupply.ToString ();
+			coins.text = Player.MoneySupply.ToString ();
 
 			//Customer request
 				amount.text = "" + line.line [0].GetComponent<Customer> ().amount;

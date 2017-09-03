@@ -6,9 +6,10 @@ public class LineManager : MonoBehaviour {
 	public GameObject customer;
 	public GameObject[] line;
 	private int customersLeft;
-	public Player Player;
+	//public Player Player;
 	public UIManager costs;
-	public GameObject AudioManager;
+	//public GameObject AudioManager;
+	public AudioManager audioManager;
 
 	public GameObject gameManager;
 
@@ -16,6 +17,7 @@ public class LineManager : MonoBehaviour {
 	void Start () {
 		//Player = GameManager.player;
 		//Player = gameManager.GetComponent<GameManager>().player;
+		audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 		this.customersLeft = GameManager.customersLeft;
 		this.line = new GameObject[customersLeft];
 		Debug.Log (customersLeft);
@@ -64,9 +66,9 @@ public class LineManager : MonoBehaviour {
 			if (Player.LumberSupply >= amount && costs.wCost <= max) {
 				Player.LumberSupply -= amount;
 				Player.MoneySupply += costs.wCost * amount;
-				AudioManager.GetComponent<AudioManager> ().AcceptSale ();
+				audioManager.AcceptSale ();
 			} else {
-				AudioManager.GetComponent<AudioManager> ().DeclineSale ();
+				audioManager.DeclineSale ();
 				//Debug.Log ("The customer leaves in a rage, ranting about your lack of stock at a reasonable price...");
 			}
 			break;
@@ -74,9 +76,9 @@ public class LineManager : MonoBehaviour {
 			if (Player.BerrySupply >= amount && costs.bCost <= max) {
 				Player.BerrySupply -= amount;
 				Player.MoneySupply += costs.bCost * amount;
-				AudioManager.GetComponent<AudioManager> ().AcceptSale ();
+				audioManager.AcceptSale ();
 			} else {	
-				AudioManager.GetComponent<AudioManager> ().DeclineSale ();
+				audioManager.DeclineSale ();
 				//Debug.Log ("The customer leaves in a rage, ranting about your lack of stock at a reasonable price...");
 			}
 			break;
@@ -84,9 +86,9 @@ public class LineManager : MonoBehaviour {
 			if (Player.CoalSupply >= amount && costs.cCost <= max) {
 				Player.CoalSupply -= amount;
 				Player.MoneySupply += costs.cCost * amount;
-				AudioManager.GetComponent<AudioManager> ().AcceptSale ();
+				audioManager.AcceptSale ();
 			} else {
-				AudioManager.GetComponent<AudioManager> ().DeclineSale ();
+				audioManager.DeclineSale ();
 				//Debug.Log ("The customer leaves in a rage, ranting about your lack of stock at a reasonable price...");
 			}
 			break;
@@ -96,7 +98,7 @@ public class LineManager : MonoBehaviour {
 
 	public void TransDecline(){
 		//Debug.Log ("Declined");
-		AudioManager.GetComponent<AudioManager> ().DeclineSale ();
+		audioManager.GetComponent<AudioManager> ().DeclineSale ();
 		CustomerServed ();
 	}
 

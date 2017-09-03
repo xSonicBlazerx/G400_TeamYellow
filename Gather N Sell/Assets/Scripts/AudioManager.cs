@@ -19,14 +19,13 @@ public class AudioManager : MonoBehaviour {
 	public AudioClip coalCollectProcess;
 	public AudioClip coalCollectSuccess;
 
-	private bool dayScene = false;
 
 	public void Awake(){
-		DontDestroyOnLoad (this);
+		//DontDestroyOnLoad (this);
 	}
 
 	public void Start(){
-		if (SceneManager.GetActiveScene ().name == "Day")
+		if (SceneManager.GetActiveScene ().name == "Day" || SceneManager.GetActiveScene ().name == "StarterScene")
 			this.GetComponent<AudioSource> ().clip = dayAmbient;
 		else {
 			this.GetComponent<AudioSource> ().clip = nightAmbient;
@@ -37,12 +36,10 @@ public class AudioManager : MonoBehaviour {
 
 	public void ChangingScene(){
 		this.GetComponent<AudioSource> ().Stop ();
-		if (dayScene) {
+		if (SceneManager.GetActiveScene ().name == "Day") {
 			this.GetComponent<AudioSource> ().clip = dayAmbient;
-			dayScene = true;
 		} else {
 			this.GetComponent<AudioSource> ().clip = nightAmbient;
-			dayScene = false;
 		}
 		this.GetComponent<AudioSource> ().Play ();
 	}

@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 	//AudioManager
 	public GameObject audioManager;
+	public GameObject soundEffectManager;
 	public Player player;
+	public Camera camera;
 
 	//Day Variables
 	public static int customersLeft = 15;
@@ -14,12 +17,18 @@ public class GameManager : MonoBehaviour {
 
 	void Awake(){
 		DontDestroyOnLoad (this);
+		DontDestroyOnLoad (player);
+		DontDestroyOnLoad (audioManager);
+		DontDestroyOnLoad (soundEffectManager);
+		DontDestroyOnLoad (camera);
 	}
 
 	// Use this for initialization
 	void Start () {
 		this.timeLeft = dayTimer;
 		//Instantiate (player);
+		if (SceneManager.GetActiveScene ().name == "StarterScene")
+			Application.LoadLevel ("_Scenes/Day");
 	}
 	
 	// Update is called once per frame

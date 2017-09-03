@@ -29,22 +29,31 @@ public class GatherManager : MonoBehaviour {
 		if (gatherTimer < 0) {
 			//Destroy (gameObject);
 			this.GetComponent<AudioSource> ().Pause ();
-			GameObject player = GameObject.Find ("Player");
-			var playerScript = player.GetComponent<Player>();
+			//GameObject player = GameObject.Find ("Player");
+			//var playerScript = player.GetComponent<Player>();
 			if (this.gameObject.CompareTag ("Tree")) {
-				Debug.Log (playerScript.LumberSupply);
-				playerScript.LumberSupply++;
-				Debug.Log (playerScript.LumberSupply);
+				//Debug.Log (playerScript.LumberSupply);
+				//playerScript.LumberSupply++;
+				//Debug.Log (playerScript.LumberSupply);
+				Debug.Log (Player.LumberSupply);
+				Player.LumberSupply++;
+				Debug.Log (Player.LumberSupply);
 				audioManager.WoodCollectSuccess ();
 			} else if (this.gameObject.CompareTag ("Berry")) {
-				Debug.Log (playerScript.BerrySupply);
-				playerScript.BerrySupply++;
-				Debug.Log (playerScript.BerrySupply);
+				//Debug.Log (playerScript.BerrySupply);
+				//playerScript.BerrySupply++;
+				//Debug.Log (playerScript.BerrySupply);
+				Debug.Log (Player.BerrySupply);
+				Player.BerrySupply++;
+				Debug.Log (Player.BerrySupply);
 				audioManager.BerriesCollectSuccess ();
 			} else if (this.gameObject.CompareTag ("Coal")) {
-				Debug.Log (playerScript.CoalSupply);
-				playerScript.CoalSupply++;
-				Debug.Log (playerScript.CoalSupply);
+				//Debug.Log (playerScript.CoalSupply);
+				//playerScript.CoalSupply++;
+				//Debug.Log (playerScript.CoalSupply);
+				Debug.Log (Player.CoalSupply);
+				Player.CoalSupply++;
+				Debug.Log (Player.CoalSupply);
 				audioManager.CoalCollectSuccess ();
 			}
 			Destroy (gameObject);
