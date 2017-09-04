@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour {
 			timeLeft = dayTimer;
 			customersLeft = 15;
 			//UnityEditor.EditorApplication.isPlaying = false;
-			audioManager.GetComponent<AudioManager>().ChangingScene();
+			audioManager.GetComponent<AudioManager>().ChangeToNight();
 			Application.LoadLevel("_Scenes/Workshop");
 		}
 	}

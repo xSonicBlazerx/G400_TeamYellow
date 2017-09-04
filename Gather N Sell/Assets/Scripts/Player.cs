@@ -26,7 +26,7 @@ public class Player : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Space) && SceneManager.GetActiveScene().name != "Day") {
 			Application.LoadLevel("_Scenes/Day");
-			audioManager.ChangingScene ();
+			audioManager.ChangeToDay ();
 		}
 	}
 

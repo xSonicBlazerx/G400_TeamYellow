@@ -34,13 +34,15 @@ public class AudioManager : MonoBehaviour {
 		this.GetComponent<AudioSource> ().Play ();
 	}
 
-	public void ChangingScene(){
+	public void ChangeToDay(){
 		this.GetComponent<AudioSource> ().Stop ();
-		if (SceneManager.GetActiveScene ().name == "Day") {
-			this.GetComponent<AudioSource> ().clip = dayAmbient;
-		} else {
-			this.GetComponent<AudioSource> ().clip = nightAmbient;
-		}
+		this.GetComponent<AudioSource> ().clip = dayAmbient;
+		this.GetComponent<AudioSource> ().Play ();
+	}
+
+	public void ChangeToNight(){
+		this.GetComponent<AudioSource> ().Stop ();
+		this.GetComponent<AudioSource> ().clip = nightAmbient;
 		this.GetComponent<AudioSource> ().Play ();
 	}
 

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour {
 
     //player script
-    Player player;
+    private Player player;
 
     //prices
     public int wCost = 0;
