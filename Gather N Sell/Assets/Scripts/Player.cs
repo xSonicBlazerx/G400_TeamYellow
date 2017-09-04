@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour {
 	public GameObject camera;
 	public AudioManager audioManager;
+	public GameObject player;
+	private SectionManager section;
 
 	public static int LumberSupply = 10;
 	public static int BerrySupply = 10;
@@ -19,6 +21,8 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+		player = GameObject.Find ("Player");
+		section = player.GetComponent<SectionManager> ();
 		rb2d = GetComponent<Rigidbody2D> ();
 	}
 	
@@ -26,6 +30,12 @@ public class Player : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Space) && SceneManager.GetActiveScene().name != "Day") {
 			Application.LoadLevel("_Scenes/Day");
+			section.next_left_checkpoint = -11.5f;
+			section.next_right_checkpoint = 11.5f;
+			section.left_adjustment = -34.5f;
+			section.right_adjustment = 34.5f;
+			var position = this.transform.position;
+			this.transform.position = new Vector3 (0, position.y, position.z);
 			audioManager.ChangeToDay ();
 		}
 	}
