@@ -46,6 +46,8 @@ public class Player : MonoBehaviour {
 			float h = Input.GetAxis ("Horizontal");
 			//Debug.Log (h);
 			rb2d.velocity = new Vector2 (h * maxSpeed, rb2d.velocity.y);
+		} else {
+			rb2d.velocity = new Vector2 (0f, 0f);
 		}
 	}
 

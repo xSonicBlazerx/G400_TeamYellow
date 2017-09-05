@@ -37,12 +37,14 @@ public class AudioManager : MonoBehaviour {
 	public void ChangeToDay(){
 		this.GetComponent<AudioSource> ().Stop ();
 		this.GetComponent<AudioSource> ().clip = dayAmbient;
+		this.GetComponent<AudioSource> ().volume = 1.0f;
 		this.GetComponent<AudioSource> ().Play ();
 	}
 
 	public void ChangeToNight(){
 		this.GetComponent<AudioSource> ().Stop ();
 		this.GetComponent<AudioSource> ().clip = nightAmbient;
+		this.GetComponent<AudioSource> ().volume = 0.375f;
 		this.GetComponent<AudioSource> ().Play ();
 	}
 
