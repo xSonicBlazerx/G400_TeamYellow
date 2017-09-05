@@ -47,6 +47,7 @@ public class Player : MonoBehaviour {
 			//Debug.Log (h);
 			rb2d.velocity = new Vector2 (h * maxSpeed, rb2d.velocity.y);
 		} else {
+			this.transform.position = new Vector3 (0, 3.55f, -1);
 			rb2d.velocity = new Vector2 (0f, 0f);
 		}
 	}
