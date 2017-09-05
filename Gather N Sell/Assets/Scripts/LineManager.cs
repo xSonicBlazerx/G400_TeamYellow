@@ -5,7 +5,7 @@ using UnityEngine;
 public class LineManager : MonoBehaviour {
 	public GameObject customer;
 	public GameObject[] line;
-	private int customersLeft;
+	public int customersLeft;
 	//public Player Player;
 	public UIManager costs;
 	//public GameObject AudioManager;

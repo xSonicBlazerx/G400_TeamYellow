@@ -13,15 +13,15 @@ public class UIManager : MonoBehaviour {
     public int wCost = 0;
     public int bCost = 0;
     public int cCost = 0;
-
+    
     //text objects
     public Text woodNum;
     public Text berryNum;
     public Text coalNum;
 
-    public Text woodPrice;
-    public Text berryPrice;
-    public Text coalPrice;
+    public InputField woodPrice;
+    public InputField berryPrice;
+    public InputField coalPrice;
 
     public Text coins;
 
@@ -34,6 +34,8 @@ public class UIManager : MonoBehaviour {
 
 	public LineManager line;
 
+    public Slider slider;
+    
 
     
 
@@ -41,21 +43,23 @@ public class UIManager : MonoBehaviour {
 	void Start ()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-	}
+
+        //prices
+        woodPrice.text = wCost.ToString();
+        berryPrice.text = bCost.ToString();
+        coalPrice.text = cCost.ToString();
+    }
 	
 	// Update is called once per frame
 	void Update ()
     {
 		if (SceneManager.GetActiveScene ().name == "Day") {
+
 			//inventory
 			woodNum.text = Player.LumberSupply.ToString ();
 			berryNum.text = Player.BerrySupply.ToString ();
 			coalNum.text = Player.CoalSupply.ToString ();
-
-			//prices
-			woodPrice.text = wCost.ToString ();
-			berryPrice.text = bCost.ToString ();
-			coalPrice.text = cCost.ToString ();
+            
 
 			//total coins
 			coins.text = Player.MoneySupply.ToString ();
@@ -73,6 +77,9 @@ public class UIManager : MonoBehaviour {
 					item.GetComponent<Image> ().sprite = coal;
 					break;
 				}
+
+            //set slider
+            slider.value = line.customersLeft;
 		}
     }
 
@@ -80,26 +87,30 @@ public class UIManager : MonoBehaviour {
     public void woodUp()
     {
         wCost++;
+        woodPrice.text = wCost.ToString();
     }
 
     //increases the price of Berries
     public void berryUp()
     {
         bCost++;
+        berryPrice.text = bCost.ToString();
     }
 
     //increases the price of coal
     public void coalUp()
     {
         cCost++;
+        coalPrice.text = cCost.ToString();
     }
 
     // decreases price of wood
     public void woodDown()
     {
         if (wCost > 0)
-        { 
+        {
             wCost--;
+            woodPrice.text = wCost.ToString();
         }
     }
 
@@ -109,6 +120,7 @@ public class UIManager : MonoBehaviour {
         if (bCost > 0)
         {
             bCost--;
+            berryPrice.text = bCost.ToString();
         }
     }
 
@@ -118,8 +130,24 @@ public class UIManager : MonoBehaviour {
         if (cCost > 0)
         {
             cCost--;
+            coalPrice.text = cCost.ToString();
         }
     }
 
+    public void woodSet(string cost)
+    {
+        wCost = int.Parse(cost);
+    }
 
+
+    public void berrySet(string cost)
+    {
+        bCost = int.Parse(cost);
+    }
+
+
+    public void coalSet(string cost)
+    {
+        cCost = int.Parse(cost);
+    }
 }
