@@ -57,10 +57,11 @@ public class SectionManager : MonoBehaviour {
 
 				if (rand_num == 1) {
 					Instantiate (tree, new Vector2(next_left_spawn.x,
-						next_left_spawn.y + 1.75f), rot);
+						(next_left_spawn.y + 1.75f)), rot);
 				}
 				if (rand_num == 2) {
-					Instantiate (coal, next_left_spawn, rot);
+					Instantiate (coal, new Vector2(next_left_spawn.x,
+						4.0f), rot);
                 }
 				if (rand_num == 3) {
                     Instantiate (bush, next_left_spawn, rot);

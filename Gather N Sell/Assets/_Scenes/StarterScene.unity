@@ -393,7 +393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tree: {fileID: 1518067242102016, guid: fe025e41b5355784dba1502ac07cc693, type: 2}
-  coal: {fileID: 1225241503958568, guid: cfd795c6406455b4e87b2f20a26e839b, type: 2}
+  coal: {fileID: 1740536723341060, guid: ae3f680d6ecfce54094a8f88ec676c6a, type: 2}
   bush: {fileID: 1105329108056228, guid: 4c491f3bc29ce844c8d3c8c1c6bd72a9, type: 2}
   background: {fileID: 1534014413999622, guid: 3f57718ecc2f0a54a9bbac956629c1c5, type: 2}
   player: {fileID: 308225597}
@@ -422,7 +422,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.2, y: 0.2}
+    oldSize: {x: 20.48, y: 20.48}
     newSize: {x: 0.2, y: 0.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -463,10 +463,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 308225596}
-  LumberSupply: 10
-  BerrySupply: 10
-  CoalSupply: 10
-  MoneySupply: 0
+  audioManager: {fileID: 0}
+  player: {fileID: 0}
   TimeRemaining: 0
   hForce: 100
   maxSpeed: 6
@@ -502,8 +500,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.9561866, g: 1, b: 0.20588237, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 8071fb0e7ea2ac1408ae2361817c5cf4, type: 3}
+  m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -519,8 +517,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 63106199}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: -1}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: 0.03, y: 3.55, z: -1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 5}
   m_Children:
   - {fileID: 308225597}
   m_Father: {fileID: 0}
@@ -676,8 +674,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 308225596}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4, z: -1.8000001}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalPosition: {x: -0.14999999, y: 7.25, z: -1.8000001}
+  m_LocalScale: {x: 5, y: 5, z: 0.2}
   m_Children:
   - {fileID: 215069491}
   - {fileID: 1098444205}

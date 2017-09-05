@@ -61,6 +61,7 @@ public class AudioManager : MonoBehaviour {
 	public void WoodCollectProcess(){
 		SoundEffectManager.clip = woodCollectProcess;
 		SoundEffectManager.loop = true;
+		SoundEffectManager.volume = 1.0f;
 		SoundEffectManager.Play ();
 	}
 
@@ -68,12 +69,14 @@ public class AudioManager : MonoBehaviour {
 		//SoundEffectManager.Stop ();
 		SoundEffectManager.clip = woodCollectSuccess;
 		SoundEffectManager.loop = false;
+		SoundEffectManager.volume = 1.0f;
 		SoundEffectManager.Play ();
 	}
 
 	public void BerriesCollectProcess(){
 		SoundEffectManager.clip = berriesCollectProcess;
 		SoundEffectManager.loop = true;
+		SoundEffectManager.volume = 0.8f;
 		SoundEffectManager.Play ();
 	}
 
@@ -81,12 +84,14 @@ public class AudioManager : MonoBehaviour {
 		//SoundEffectManager.Stop ();
 		SoundEffectManager.clip = berriesCollectSuccess;
 		SoundEffectManager.loop = false;
+		SoundEffectManager.volume = 0.8f;
 		SoundEffectManager.Play ();
 	}
 
 	public void CoalCollectProcess(){
 		SoundEffectManager.clip = coalCollectProcess;
 		SoundEffectManager.loop = true;
+		SoundEffectManager.volume = 1.0f;
 		SoundEffectManager.Play ();
 	}
 
@@ -94,6 +99,7 @@ public class AudioManager : MonoBehaviour {
 		//SoundEffectManager.Stop ();
 		SoundEffectManager.clip = coalCollectSuccess;
 		SoundEffectManager.loop = false;
+		SoundEffectManager.volume = 1.0f;
 		SoundEffectManager.Play ();
 	}
 }

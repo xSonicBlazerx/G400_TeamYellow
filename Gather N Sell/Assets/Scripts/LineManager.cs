@@ -26,6 +26,7 @@ public class LineManager : MonoBehaviour {
 									new Vector3 (this.transform.position.x - (i * 1),
 												 this.transform.position.y),
 									this.transform.rotation);
+			line [i].GetComponent<Customer> ().transform.localScale = new Vector3 (0.2f, 0.2f, 0.2f);
 		}
 		//Makes first customer state their request
 		line [0].GetComponent<Customer> ().Request ();

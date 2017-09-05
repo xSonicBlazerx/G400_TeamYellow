@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour {
 
 	//Day Variables
 	public static int customersLeft = 15;
-	float dayTimer = 180;
+	float dayTimer = 60;
 	float timeLeft;
 
 	void Awake(){
@@ -34,7 +34,11 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		timeLeft -= Time.deltaTime;
-		GameEnd ();
+		if (this.timeLeft <= 0 && SceneManager.GetActiveScene ().name == "Workshop") {
+			ManagerDay ();
+		}else if (SceneManager.GetActiveScene().name == "Day" && (this.timeLeft <= 0 || customersLeft == 0)){
+			ManagerNight();
+		}
 	}
 
 	/**
@@ -42,14 +46,19 @@ public class GameManager : MonoBehaviour {
 	 * If so, then the day is over
 	 * (NOTE: Still need to set up transition between day and night)
 	 */
-	void GameEnd(){
-		if (customersLeft == 0 || this.timeLeft <= 0) {
+	void ManagerNight(){
 			Debug.Log ("Day Over!!!");
 			timeLeft = dayTimer;
 			customersLeft = 15;
 			//UnityEditor.EditorApplication.isPlaying = false;
 			audioManager.GetComponent<AudioManager>().ChangeToNight();
 			Application.LoadLevel("_Scenes/Workshop");
-		}
+	}
+
+	void ManagerDay(){
+		Debug.Log ("Night Over!!!");
+		timeLeft = dayTimer;
+		audioManager.GetComponent<AudioManager>().ChangeToDay();
+		Application.LoadLevel("_Scenes/Day");
 	}
 }

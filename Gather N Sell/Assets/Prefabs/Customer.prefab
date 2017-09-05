@@ -41,9 +41,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resource: 
   amount: 0
-  easyCustomer: {fileID: 21300000, guid: 4e597a6f4e8b53347819860599eb2acc, type: 3}
-  mediumCustomer: {fileID: 21300000, guid: 5157600e9ef733d4b91898639a2dfcbb, type: 3}
-  hardCustomer: {fileID: 21300000, guid: 6b49ef87ef99c7042b92877abeb8ca2b, type: 3}
+  easyCustomer: {fileID: 21300000, guid: e908828294bd5d843834b9945d003f33, type: 3}
+  mediumCustomer: {fileID: 21300000, guid: d5db94cffc0ac474fb8ac46f5954fdbf, type: 3}
+  hardCustomer: {fileID: 21300000, guid: 3ea544b8ae42ea2429e65248b24bb00f, type: 3}
   minVal: 0
   maxVal: 0
 --- !u!212 &212124969395058810
