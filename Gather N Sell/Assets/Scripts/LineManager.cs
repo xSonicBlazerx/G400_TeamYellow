@@ -29,7 +29,8 @@ public class LineManager : MonoBehaviour {
 			line [i].GetComponent<Customer> ().transform.localScale = new Vector3 (0.2f, 0.2f, 0.2f);
 		}
 		//Makes first customer state their request
-		line [0].GetComponent<Customer> ().Request ();
+		if (customersLeft>0)
+			line [0].GetComponent<Customer> ().Request ();
 	}
 
 	//Deals with variables once a customer has been served
@@ -60,39 +61,50 @@ public class LineManager : MonoBehaviour {
 	}
 
 	public void TransAccept(){
-		int amount = line [0].GetComponent<Customer> ().amount;
-		int max = line [0].GetComponent<Customer> ().maxVal;
-		switch (line [0].GetComponent<Customer> ().resource) {
-		case "wood":
-			if (Player.LumberSupply >= amount && costs.wCost <= max) {
-				Player.LumberSupply -= amount;
-				Player.MoneySupply += costs.wCost * amount;
-				audioManager.AcceptSale ();
-			} else {
-				audioManager.DeclineSale ();
-				//Debug.Log ("The customer leaves in a rage, ranting about your lack of stock at a reasonable price...");
+		if (GameManager.customersLeft > 0) {
+			int amount = line [0].GetComponent<Customer> ().amount;
+			int max = line [0].GetComponent<Customer> ().maxVal;
+			switch (line [0].GetComponent<Customer> ().resource) {
+			case "wood":
+				if (Player.LumberSupply >= amount && costs.wCost <= max) {
+					Player.LumberSupply -= amount;
+					Player.LumberSold += amount;
+					Player.MoneySupply += costs.wCost * amount;
+					Player.MoneyMade += costs.wCost * amount;
+					Player.CustomersServed++;
+					audioManager.AcceptSale ();
+				} else {
+					audioManager.DeclineSale ();
+					//Debug.Log ("The customer leaves in a rage, ranting about your lack of stock at a reasonable price...");
+				}
+				break;
+			case "berries":
+				if (Player.BerrySupply >= amount && costs.bCost <= max) {
+					Player.BerrySupply -= amount;
+					Player.BerrySold += amount;
+					Player.MoneySupply += costs.bCost * amount;
+					Player.MoneyMade += costs.bCost * amount;
+					audioManager.AcceptSale ();
+					Player.CustomersServed++;
+				} else {	
+					audioManager.DeclineSale ();
+					//Debug.Log ("The customer leaves in a rage, ranting about your lack of stock at a reasonable price...");
+				}
+				break;
+			default:
+				if (Player.CoalSupply >= amount && costs.cCost <= max) {
+					Player.CoalSupply -= amount;
+					Player.CoalSold += amount;
+					Player.MoneySupply += costs.cCost * amount;
+					Player.MoneyMade += costs.cCost * amount;
+					audioManager.AcceptSale ();
+					Player.CustomersServed++;
+				} else {
+					audioManager.DeclineSale ();
+					//Debug.Log ("The customer leaves in a rage, ranting about your lack of stock at a reasonable price...");
+				}
+				break;
 			}
-			break;
-		case "berries":
-			if (Player.BerrySupply >= amount && costs.bCost <= max) {
-				Player.BerrySupply -= amount;
-				Player.MoneySupply += costs.bCost * amount;
-				audioManager.AcceptSale ();
-			} else {	
-				audioManager.DeclineSale ();
-				//Debug.Log ("The customer leaves in a rage, ranting about your lack of stock at a reasonable price...");
-			}
-			break;
-		default:
-			if (Player.CoalSupply >= amount && costs.cCost <= max) {
-				Player.CoalSupply -= amount;
-				Player.MoneySupply += costs.cCost * amount;
-				audioManager.AcceptSale ();
-			} else {
-				audioManager.DeclineSale ();
-				//Debug.Log ("The customer leaves in a rage, ranting about your lack of stock at a reasonable price...");
-			}
-			break;
 		}
 		CustomerServed ();
 	}

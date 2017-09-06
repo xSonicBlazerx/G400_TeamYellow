@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour {
 	float dayTimer = 60;
 	float timeLeft;
 
+	bool finished = false;
+
 	void Awake(){
 		DontDestroyOnLoad (this);
 		DontDestroyOnLoad (player);
@@ -32,12 +34,22 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		timeLeft -= Time.deltaTime;
 		if (this.timeLeft <= 0 && SceneManager.GetActiveScene ().name == "Workshop") {
-			ManagerDay ();
+			if(!finished)
+				Time.timeScale = 0;
+			if (Time.timeScale > 0)
+				ManagerDay ();
+			else
+				GameObject.FindGameObjectWithTag("UINight").GetComponent<NightManager>().CompleteSceneNight();
 		}else if (SceneManager.GetActiveScene().name == "Day" && (this.timeLeft <= 0 || customersLeft == 0)){
-			ManagerNight();
+			if(!finished)
+				Time.timeScale = 0;
+			if (Time.timeScale > 0)
+				ManagerNight ();
+			else
+				GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().CompleteSceneDay();
 		}
 	}
 
@@ -46,19 +58,31 @@ public class GameManager : MonoBehaviour {
 	 * If so, then the day is over
 	 * (NOTE: Still need to set up transition between day and night)
 	 */
-	void ManagerNight(){
-			Debug.Log ("Day Over!!!");
-			timeLeft = dayTimer;
-			customersLeft = 15;
-			//UnityEditor.EditorApplication.isPlaying = false;
-			audioManager.GetComponent<AudioManager>().ChangeToNight();
-			Application.LoadLevel("_Scenes/Workshop");
+	public void ManagerNight(){
+		Debug.Log ("Day Over!!!");
+		timeLeft = dayTimer;
+		customersLeft = 15;
+		//UnityEditor.EditorApplication.isPlaying = false;
+		audioManager.GetComponent<AudioManager>().ChangeToNight();
+		Application.LoadLevel("_Scenes/Workshop");
+		Player.LumberSold = 0;
+		Player.BerrySold = 0;
+		Player.CoalSold = 0;
+		Player.MoneyMade = 0;
+		Player.CustomersServed = 0;
 	}
 
-	void ManagerDay(){
+	public void ManagerDay(){
 		Debug.Log ("Night Over!!!");
 		timeLeft = dayTimer;
 		audioManager.GetComponent<AudioManager>().ChangeToDay();
 		Application.LoadLevel("_Scenes/Day");
+		Player.LumberSold = 0;
+		Player.BerrySold = 0;
+		Player.CoalSold = 0;
+	}
+
+	void CompleteScreen(){
+		
 	}
 }

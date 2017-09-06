@@ -8,6 +8,9 @@ public class UIManager : MonoBehaviour {
 
     //player script
     private Player player;
+	public GameManager gameManager;
+
+	public GameObject BLACK;
 
     //prices
     public int wCost = 0;
@@ -43,6 +46,7 @@ public class UIManager : MonoBehaviour {
 	void Start ()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+		gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
 
         //prices
         woodPrice.text = wCost.ToString();
@@ -65,6 +69,7 @@ public class UIManager : MonoBehaviour {
 			coins.text = Player.MoneySupply.ToString ();
 
 			//Customer request
+			if (GameManager.customersLeft > 0) {
 				amount.text = "" + line.line [0].GetComponent<Customer> ().amount;
 				switch (line.line [0].GetComponent<Customer> ().resource) {
 				case "wood":
@@ -77,6 +82,7 @@ public class UIManager : MonoBehaviour {
 					item.GetComponent<Image> ().sprite = coal;
 					break;
 				}
+			}
 
             //set slider
             slider.value = line.customersLeft;
@@ -150,4 +156,21 @@ public class UIManager : MonoBehaviour {
     {
         cCost = int.Parse(cost);
     }
+
+	public void CompleteSceneDay(){
+		BLACK.SetActive (true);
+		Player.LumberSupply.ToString ();
+		Player.BerrySupply.ToString ();
+		Player.CoalSupply.ToString ();
+		Player.LumberSold.ToString ();
+		Player.BerrySold.ToString ();
+		Player.CoalSold.ToString ();
+		Player.MoneyMade.ToString ();
+		Player.CustomersServed.ToString ();
+		while (true) {
+			if (Input.GetKeyDown (KeyCode.Space))
+				break;
+		}
+		gameManager.ManagerNight ();
+	}
 }

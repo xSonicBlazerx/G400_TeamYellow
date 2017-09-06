@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e006f95750fa4743856fb97592c7ca9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gatherTimer: 10
+  gatherTimer: 8
   audioManager: {fileID: 0}
 --- !u!212 &212109905150149144
 SpriteRenderer:

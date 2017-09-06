@@ -37,6 +37,7 @@ public class GatherManager : MonoBehaviour {
 				//Debug.Log (playerScript.LumberSupply);
 				Debug.Log (Player.LumberSupply);
 				Player.LumberSupply++;
+				Player.LumberSold++;
 				Debug.Log (Player.LumberSupply);
 				audioManager.WoodCollectSuccess ();
 			} else if (this.gameObject.CompareTag ("Berry")) {
@@ -45,6 +46,7 @@ public class GatherManager : MonoBehaviour {
 				//Debug.Log (playerScript.BerrySupply);
 				Debug.Log (Player.BerrySupply);
 				Player.BerrySupply++;
+				Player.BerrySold++;
 				Debug.Log (Player.BerrySupply);
 				audioManager.BerriesCollectSuccess ();
 			} else if (this.gameObject.CompareTag ("Coal")) {
@@ -53,6 +55,7 @@ public class GatherManager : MonoBehaviour {
 				//Debug.Log (playerScript.CoalSupply);
 				Debug.Log (Player.CoalSupply);
 				Player.CoalSupply++;
+				Player.CoalSold++;
 				Debug.Log (Player.CoalSupply);
 				audioManager.CoalCollectSuccess ();
 			}

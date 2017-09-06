@@ -13,9 +13,14 @@ public class Player : MonoBehaviour {
 	public static int BerrySupply = 10;
 	public static int CoalSupply = 10;
 	public static int MoneySupply = 0;
-	public int TimeRemaining;
 	public float hForce = 100f;
 	public float maxSpeed = 3f;
+
+	public static int LumberSold = 0;
+	public static int BerrySold = 0;
+	public static int CoalSold = 0;
+	public static int MoneyMade = 0;
+	public static int CustomersServed = 0;
 
 	private Rigidbody2D rb2d;
 	// Use this for initialization
@@ -28,15 +33,15 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.Space) && SceneManager.GetActiveScene().name != "Day") {
-			Application.LoadLevel("_Scenes/Day");
+		if (SceneManager.GetActiveScene().name != "Day") {
+			//Application.LoadLevel("_Scenes/Day");
 			section.next_left_checkpoint = -11.5f;
 			section.next_right_checkpoint = 11.5f;
 			section.left_adjustment = -34.5f;
 			section.right_adjustment = 34.5f;
 			var position = this.transform.position;
 			this.transform.position = new Vector3 (0, position.y, position.z);
-			audioManager.ChangeToDay ();
+			//audioManager.ChangeToDay ();
 		}
 	}
 
