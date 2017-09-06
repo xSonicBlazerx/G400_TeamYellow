@@ -208,7 +208,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &384943610
 RectTransform:
   m_ObjectHideFlags: 0
@@ -469,6 +469,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  fading: {fileID: 384943609}
+  night: {fileID: 1667570187}
 --- !u!114 &1266524780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -707,7 +709,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1667570188
 RectTransform:
   m_ObjectHideFlags: 0

@@ -33,21 +33,21 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (SceneManager.GetActiveScene().name != "Day") {
-			//Application.LoadLevel("_Scenes/Day");
-			section.next_left_checkpoint = -11.5f;
-			section.next_right_checkpoint = 11.5f;
-			section.left_adjustment = -34.5f;
-			section.right_adjustment = 34.5f;
-			var position = this.transform.position;
-			this.transform.position = new Vector3 (0, position.y, position.z);
-			//audioManager.ChangeToDay ();
-		}
+//		if (Input.GetKeyDown(KeyCode.Space) && SceneManager.GetActiveScene().name != "Day") {
+//			//Application.LoadLevel("_Scenes/Day");
+//			section.next_left_checkpoint = -11.5f;
+//			section.next_right_checkpoint = 11.5f;
+//			section.left_adjustment = -34.5f;
+//			section.right_adjustment = 34.5f;
+//			var position = this.transform.position;
+//			this.transform.position = new Vector3 (0, position.y, position.z);
+//			//audioManager.ChangeToDay ();
+//		}
 	}
 
 	void FixedUpdate()
 	{
-		if (SceneManager.GetActiveScene ().name != "Day") {
+		if (SceneManager.GetActiveScene ().name == "Workshop") {
 			float h = Input.GetAxis ("Horizontal");
 			//Debug.Log (h);
 			rb2d.velocity = new Vector2 (h * maxSpeed, rb2d.velocity.y);

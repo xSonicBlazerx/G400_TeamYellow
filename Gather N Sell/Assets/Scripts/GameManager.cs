@@ -37,19 +37,11 @@ public class GameManager : MonoBehaviour {
 	void FixedUpdate () {
 		timeLeft -= Time.deltaTime;
 		if (this.timeLeft <= 0 && SceneManager.GetActiveScene ().name == "Workshop") {
-			if(!finished)
-				Time.timeScale = 0;
-			if (Time.timeScale > 0)
-				ManagerDay ();
-			else
-				GameObject.FindGameObjectWithTag("UINight").GetComponent<NightManager>().CompleteSceneNight();
+			Time.timeScale = 0;
+			GameObject.FindGameObjectWithTag("UINight").GetComponent<NightManager>().CompleteSceneNight();
 		}else if (SceneManager.GetActiveScene().name == "Day" && (this.timeLeft <= 0 || customersLeft == 0)){
-			if(!finished)
-				Time.timeScale = 0;
-			if (Time.timeScale > 0)
-				ManagerNight ();
-			else
-				GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().CompleteSceneDay();
+			Time.timeScale = 0;
+			GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().CompleteSceneDay();
 		}
 	}
 
@@ -70,6 +62,7 @@ public class GameManager : MonoBehaviour {
 		Player.CoalSold = 0;
 		Player.MoneyMade = 0;
 		Player.CustomersServed = 0;
+		Time.timeScale = 1;
 	}
 
 	public void ManagerDay(){
@@ -80,6 +73,7 @@ public class GameManager : MonoBehaviour {
 		Player.LumberSold = 0;
 		Player.BerrySold = 0;
 		Player.CoalSold = 0;
+		Time.timeScale = 1;
 	}
 
 	void CompleteScreen(){

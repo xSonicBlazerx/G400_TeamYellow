@@ -90,7 +90,7 @@ public class SectionManager : MonoBehaviour {
                 }
 				if (rand_num == 2) {
 					Instantiate (coal, new Vector2(next_right_spawn.x,
-						next_right_spawn.y + 0.9f), rot);
+						next_right_spawn.y + 0.7f), rot);
                 }
 				if (rand_num == 3) {
 					Instantiate (bush, next_right_spawn, rot);

@@ -465,7 +465,6 @@ MonoBehaviour:
   camera: {fileID: 308225596}
   audioManager: {fileID: 0}
   player: {fileID: 0}
-  TimeRemaining: 0
   hForce: 100
   maxSpeed: 6
 --- !u!212 &63106204

@@ -39,7 +39,7 @@ public class UIManager : MonoBehaviour {
 
     public Slider slider;
     
-
+	bool atPause = false;
     
 
 	// Use this for initialization
@@ -86,6 +86,9 @@ public class UIManager : MonoBehaviour {
 
             //set slider
             slider.value = line.customersLeft;
+
+			if (atPause && Input.GetKeyDown (KeyCode.Space))
+				gameManager.ManagerNight ();
 		}
     }
 
@@ -167,10 +170,6 @@ public class UIManager : MonoBehaviour {
 		Player.CoalSold.ToString ();
 		Player.MoneyMade.ToString ();
 		Player.CustomersServed.ToString ();
-		while (true) {
-			if (Input.GetKeyDown (KeyCode.Space))
-				break;
-		}
-		gameManager.ManagerNight ();
+		atPause = true;
 	}
 }
