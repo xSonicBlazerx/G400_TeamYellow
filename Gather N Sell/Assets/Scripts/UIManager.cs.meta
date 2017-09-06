@@ -1,10 +1,26 @@
 fileFormatVersion: 2
 guid: 709459c998f1db8448f742bf22a9f1b4
-timeCreated: 1503878823
+timeCreated: 1504704561
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - gameManager: {instanceID: 0}
+  - BLACK: {instanceID: 0}
+  - woodNum: {instanceID: 0}
+  - berryNum: {instanceID: 0}
+  - coalNum: {instanceID: 0}
+  - woodPrice: {instanceID: 0}
+  - berryPrice: {instanceID: 0}
+  - coalPrice: {instanceID: 0}
+  - coins: {instanceID: 0}
+  - item: {instanceID: 0}
+  - amount: {instanceID: 0}
+  - wood: {fileID: 21300000, guid: 75f8747f9ae52824cb176c8f30614cd5, type: 3}
+  - berries: {fileID: 21300000, guid: da9bdb21910280c4b8c486f678276870, type: 3}
+  - coal: {fileID: 21300000, guid: 65e5a4891b3bf7149b415c9b393ca52e, type: 3}
+  - line: {instanceID: 0}
+  - slider: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -1,16 +1,16 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GatherManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\NightManager.cs">
     <Files>
-      <File FileName="Assets\Scripts\Player.cs" Line="36" Column="3" />
-      <File FileName="Assets\Scripts\GameManager.cs" Line="76" Column="22" />
-      <File FileName="Assets\Scripts\LineManager.cs" Line="38" Column="1" />
-      <File FileName="Assets\Scripts\Customer.cs" Line="54" Column="58" />
-      <File FileName="Assets\Scripts\UIManager.cs" Line="91" Column="29" />
-      <File FileName="Assets\Scripts\GatherManager.cs" Line="60" Column="37" />
-      <File FileName="Assets\Scripts\SectionManager.cs" Line="93" Column="31" />
-      <File FileName="Assets\Scripts\AudioManager.cs" Line="115" Column="4" />
-      <File FileName="Assets\Scripts\NightManager.cs" Line="21" Column="51" />
+      <File FileName="Assets\Scripts\Player.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\LineManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Customer.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\UIManager.cs" Line="171" Column="16" />
+      <File FileName="Assets\Scripts\GatherManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SectionManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\AudioManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\NightManager.cs" Line="35" Column="16" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -40,6 +40,10 @@ public class UIManager : MonoBehaviour {
     public Slider slider;
     
 	bool atPause = false;
+
+	public Text wSold;
+	public Text bSold;
+	public Text cSold;
     
 
 	// Use this for initialization
@@ -162,14 +166,9 @@ public class UIManager : MonoBehaviour {
 
 	public void CompleteSceneDay(){
 		BLACK.SetActive (true);
-		Player.LumberSupply.ToString ();
-		Player.BerrySupply.ToString ();
-		Player.CoalSupply.ToString ();
-		Player.LumberSold.ToString ();
-		Player.BerrySold.ToString ();
-		Player.CoalSold.ToString ();
-		Player.MoneyMade.ToString ();
-		Player.CustomersServed.ToString ();
+		wSold.text = Player.LumberSold.ToString ();
+		bSold.text = Player.BerrySold.ToString ();
+		cSold.text = Player.CoalSold.ToString ();
 		atPause = true;
 	}
 }
